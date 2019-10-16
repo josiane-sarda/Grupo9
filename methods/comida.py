@@ -1,104 +1,104 @@
-class Comida:
-    def __init__(self):
-        self.__id = 0
-        self.__pizza = ''
-        self.__hamburger = ''
-        self.__sushi = ''
-        self.__bixcoito = ''
-        self.__batata = ''
-        self.__pao = ''
-        self.__frango = ''
-        self.__lasanha = ''
-        self.__fricasse = ''
-        self.__tapioca = ''
+# class Comida:
+#     def __init__(self):
+#         self.__id = 0
+#         self.__pizza = ''
+#         self.__hamburger = ''
+#         self.__sushi = ''
+#         self.__bixcoito = ''
+#         self.__batata = ''
+#         self.__pao = ''
+#         self.__frango = ''
+#         self.__lasanha = ''
+#         self.__fricasse = ''
+#         self.__tapioca = ''
 
-    @property
-    def id(self):
-        return self.__id
+#     @property
+#     def id(self):
+#         return self.__id
 
-    @id.setter
-    def id(self, id):
-        self.__id = id
+#     @id.setter
+#     def id(self, id):
+#         self.__id = id
 
-    @property
-    def pizza(self):
-        return self.__pizza
+#     @property
+#     def pizza(self):
+#         return self.__pizza
 
-    @pizza.setter
-    def pizza(self, pizza):
-        self.__pizza = pizza
+#     @pizza.setter
+#     def pizza(self, pizza):
+#         self.__pizza = pizza
 
-    @property
-    def hamburger(self):
-        return self.__hamburger
+#     @property
+#     def hamburger(self):
+#         return self.__hamburger
 
-    @hamburger.setter
-    def hamburger(self, hamburger):
-        self.__hamburguer = hamburger
+#     @hamburger.setter
+#     def hamburger(self, hamburger):
+#         self.__hamburguer = hamburger
 
-    @property
-    def sushi(self):
-        return self.__sushi
+#     @property
+#     def sushi(self):
+#         return self.__sushi
 
-    @sushi.setter
-    def sushi(self, sushi):
-        self.__sushi = sushi
+#     @sushi.setter
+#     def sushi(self, sushi):
+#         self.__sushi = sushi
 
-    @property
-    def bixcoito(self):
-        return self.__bixcoito
+#     @property
+#     def bixcoito(self):
+#         return self.__bixcoito
 
-    @bixcoito.setter
-    def bixcoito(self, bixcoito):
-        self.__bixcoito = bixcoito
+#     @bixcoito.setter
+#     def bixcoito(self, bixcoito):
+#         self.__bixcoito = bixcoito
 
-    @property
-    def batata(self):
-        return self.__batata
+#     @property
+#     def batata(self):
+#         return self.__batata
 
-    @batata.setter
-    def __batata(self, batata):
-        self.__batata = batata
+#     @batata.setter
+#     def __batata(self, batata):
+#         self.__batata = batata
 
-    @property
-    def pao(self):
-        return self.__pao
+#     @property
+#     def pao(self):
+#         return self.__pao
 
-    @pao.setter
-    def pao(self, pao):
-        self.__pao = pao
+#     @pao.setter
+#     def pao(self, pao):
+#         self.__pao = pao
 
-    @property
-    def frango(self):
-        return self.__frango
+#     @property
+#     def frango(self):
+#         return self.__frango
 
-    @frango.setter
-    def frango(self, frango):
-        self.__frango = frango
+#     @frango.setter
+#     def frango(self, frango):
+#         self.__frango = frango
 
-    @property
-    def lasanha(self):
-        return self.__lasanha
+#     @property
+#     def lasanha(self):
+#         return self.__lasanha
 
-    @lasanha.setter
-    def lasanha(self, lasanha):
-        self.__lasanha = lasanha
+#     @lasanha.setter
+#     def lasanha(self, lasanha):
+#         self.__lasanha = lasanha
 
-    @property
-    def fricasse(self):
-        return self.__fricasse
+#     @property
+#     def fricasse(self):
+#         return self.__fricasse
 
-    @fricasse.setter
-    def fricasse(self, fricasse):
-        self.__fricasse = fricasse
+#     @fricasse.setter
+#     def fricasse(self, fricasse):
+#         self.__fricasse = fricasse
 
-    @property
-    def tapioca(self):
-        return self.__tapioca
+#     @property
+#     def tapioca(self):
+#         return self.__tapioca
 
-    @tapioca.setter
-    def tapioca(self, tapioca):
-        self.__tapioca = tapioca 
+#     @tapioca.setter
+#     def tapioca(self, tapioca):
+#         self.__tapioca = tapioca 
     
 
 
