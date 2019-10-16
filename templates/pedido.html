@@ -1,35 +1,86 @@
-<head>
+<html>
 
-    <!-- <title>{{pagina_inicial}}</title> -->
-    <!-- <link rel="stylesheet" href="../static/style.css"> -->
+<head>
+    <style>
+        body {
+            background: #6e0a0a;
+            margin: 0;
+        }
+
+        ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: #333;
+        }
+
+        li {
+            float: left;
+        }
+
+        li a,
+        .dropbtn {
+            display: inline-block;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+
+        li a:hover,
+        .dropdown:hover .dropbtn {
+            background-color: red;
+        }
+
+        li.dropdown {
+            display: inline-block;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #a7a1a1;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+        }
+
+        .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            text-align: left;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #f1f1f1;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+    </style>
 </head>
 
 <body>
-    <div class='cabecalho'>
-        <div class="logo">
-            <a href="/">{{pagina_inicial}}</a>
-        </div>
-        <div class="menu">
-            <ul>
-                <li>
-                    <a href="/bebida">Bebida</a>
-                </li>
-                <li>
-                    <a href="/comida">Comida</a>
-                </li>
-                <li>
-                    <a href="/sobremesa">Sobremesas</a>
-                </li>
-                <li>
-                    <a href="/pedido">Pedido</a>
-                </li>
 
-            </ul>
-        </div>
+    <ul>
+        <li><a href="/">Home</a></li>
+        <!-- <li><a href="/paginaguto">Guto-A lenda</a></li> -->
 
-    </div>
-    {% block index %} 
-    {% endblock %}
+        <li class="dropdown">
+            <a href="javascript:void(0)" class="dropbtn">tipos de investimento</a>
+            <div class="dropdown-content">
+                <a href="/comida">PRATOS E LANCHES</a>
+                <a href="/bebida">BEBIDAS</a>
+                <a href="/sobremesa">SOBREMESAS</a>
+                <a href="/pedido">PEDIDO</a>
+            </div>
+        </li>
+    </ul>
+
 </body>
 
 </html>
