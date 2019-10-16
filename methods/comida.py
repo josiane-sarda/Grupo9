@@ -4,11 +4,10 @@ class Comida:
         self.__pizza = ''
         self.__hamburger = ''
         self.__sushi = ''
-        self.__picanha_defumada_com_risoto = ''
-        self.__bixcoito_carioca = ''
-        self.__batata_frita = ''
-        self.__pao_de_queijo = ''
-        self.__frango_frito = ''
+        self.__bixcoito = ''
+        self.__batata = ''
+        self.__pao = ''
+        self.__frango = ''
         self.__lasanha = ''
         self.__fricasse = ''
         self.__tapioca = ''
@@ -36,3 +35,75 @@ class Comida:
     @descricao.setter
     def hamburger(self, hamburger):
         self.__descricao = __hamburger
+
+    @property
+    def sushi(self):
+        return self.__sushi
+
+    @descricao.setter
+    def sushi(self, sushi):
+        self.__descricao = __sushi
+
+    @property
+    def __bixcoito(self):
+        return self.__bixcoito
+
+    @descricao.setter
+    def bixcoito(self, bixcoito):
+        self.__descricao = __bixcoito
+
+    @property
+    def __batata(self):
+        return self.__batata
+
+    @descricao.setter
+    def __batata(self, batata):
+        self.__descricao = __batata
+
+    @property
+    def __pao(self):
+        return self.__pao
+
+    @descricao.setter
+    def pao(self, pao):
+        self.__descricao = __pao
+
+    @property
+    def frango(self):
+        return self.__frango
+
+    @descricao.setter
+    def frango(self, frango):
+        self.__descricao = __frango
+
+    @property
+    def __lasanha(self):
+        return self.__lasanha
+
+    @descricao.setter
+    def lasanha(self, lasanha):
+        self.__descricao = __lasanha
+
+    @property
+    def fricasse(self):
+        return self.__fricasse
+
+    @descricao.setter
+    def fricasse(self, fricasse):
+        self.__descricao = __fricasse
+
+    @property
+    def __tapioca(self):
+        return self.__tapioca
+
+    @descricao.setter
+    def __tapioca(self, __tapioca):
+        self.__descricao = __tapioca 
+    
+
+
+
+
+
+
+
