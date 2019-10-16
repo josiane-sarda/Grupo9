@@ -26,7 +26,7 @@ class Comida:
 
     @tipo.setter
     def pizza(self, pizza):
-        self.__tipo = __pizza
+        self.__pizza = __pizza
 
     @property
     def hamburger(self):
@@ -34,7 +34,7 @@ class Comida:
 
     @descricao.setter
     def hamburger(self, hamburger):
-        self.__descricao = __hamburger
+        self.__hamburger = __hamburger
 
     @property
     def sushi(self):
@@ -42,7 +42,7 @@ class Comida:
 
     @descricao.setter
     def sushi(self, sushi):
-        self.__descricao = __sushi
+        self.__sushi = __sushi
 
     @property
     def __bixcoito(self):
@@ -50,7 +50,7 @@ class Comida:
 
     @descricao.setter
     def bixcoito(self, bixcoito):
-        self.__descricao = __bixcoito
+        self.__bixcoito = __bixcoito
 
     @property
     def __batata(self):
@@ -58,7 +58,7 @@ class Comida:
 
     @descricao.setter
     def __batata(self, batata):
-        self.__descricao = __batata
+        self.__batata = __batata
 
     @property
     def __pao(self):
@@ -66,7 +66,7 @@ class Comida:
 
     @descricao.setter
     def pao(self, pao):
-        self.__descricao = __pao
+        self.__pao = __pao
 
     @property
     def frango(self):
@@ -74,7 +74,7 @@ class Comida:
 
     @descricao.setter
     def frango(self, frango):
-        self.__descricao = __frango
+        self.__frango = __frango
 
     @property
     def __lasanha(self):
@@ -82,7 +82,7 @@ class Comida:
 
     @descricao.setter
     def lasanha(self, lasanha):
-        self.__descricao = __lasanha
+        self.__lasanha = __lasanha
 
     @property
     def fricasse(self):
@@ -90,7 +90,7 @@ class Comida:
 
     @descricao.setter
     def fricasse(self, fricasse):
-        self.__descricao = __fricasse
+        self.__fricasse = __fricasse
 
     @property
     def __tapioca(self):
@@ -98,7 +98,7 @@ class Comida:
 
     @descricao.setter
     def __tapioca(self, __tapioca):
-        self.__descricao = __tapioca 
+        self.__tapioca = __tapioca 
     
 
 
