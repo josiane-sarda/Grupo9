@@ -1,8 +1,7 @@
 from flask import Flask, render_template
-<<<<<<< HEAD
-from comida import Comida
-from bebida import Bebida
-from sobremesa import Sobremesa
+from methods.comida import Comida
+from methods.bebida import Bebida
+from methods.sobremesa import Sobremesa
 import MySQLdb
 
 def listar_comida_db():
@@ -23,24 +22,13 @@ def listar_comida_db():
     return listar_produto
 
 
-
-=======
-# from comida import Comida
-# from bebida import Bebida
-# from sobremesa import Sobremesa
->>>>>>> f8370e1e29824cb4a2934f036dcc2eeb5103b21a
-
-
 pagina_nome = "Nome da pagina"
 
-<<<<<<< HEAD
-app = Flask(__name__)
-@app.route('/')
-=======
 
 app = Flask(__name__)
-@app.route('/home')
->>>>>>> f8370e1e29824cb4a2934f036dcc2eeb5103b21a
+@app.route('/')
+
+
 def inicio():
     return render_template('index.html')
 
