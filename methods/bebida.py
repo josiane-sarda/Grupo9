@@ -21,57 +21,57 @@ class Bebida:
     def agua(self):
         return self.__agua
 
-    @descricao.setter
+    @agua.setter
     def agua(self, agua):
-        self.__descricao = __agua
+        self.__agua = agua
 
     @property
-    def __suco(self):
+    def suco(self):
         return self.__suco
 
-    @descricao.setter
+    @suco.setter
     def suco(self, suco):
-        self.__descricao = __suco
+        self.__suco = suco
 
     @property
-    def __refrigerante(self):
+    def refrigerante(self):
         return self.__refrigerante
 
-    @descricao.setter
+    @refrigerante.setter
     def refrigerante(self, refrigerante):
-        self.__descricao = __refrigerante
+        self.__refrigerante = refrigerante
         
     @property
-    def __cerveja(self):
+    def cerveja(self):
         return self.__cerveja
 
-    @descricao.setter
+    @cerveja.setter
     def cerveja(self, cerveja):
-        self.__descricao = __cerveja
+        self.__cerveja = cerveja
 
     @property
-    def __cha(self):
+    def cha(self):
         return self.__cha
 
-    @descricao.setter
+    @cha.setter
     def cha(self, cha):
-        self.__descricao = __cha
+        self.__cha = cha
 
     @property
-    def __cafe(self):
+    def cafe(self):
         return self.__cafe
 
-    @descricao.setter
+    @cafe.setter
     def cafe(self, cafe):
-        self.__descricao = __cafe
+        self.__cafe = cafe
 
     @property
-    def __achocolatado(self):
+    def achocolatado(self):
         return self.__achocolatado
 
-    @descricao.setter
+    @achocolatado.setter
     def achocolatado(self, achocolatado):
-        self.__descricao = __achocolatado
+        self.__achocolatado = achocolatado
 
     
 

@@ -19,41 +19,41 @@ class Comida:
     def sorvete(self):
         return self.__sorvete
 
-    @descricao.setter
+    @sorvete.setter
     def sorvete(self, sorvete):
-        self.__descricao = __sorvete
+        self.__sorvete = sorvete
 
     @property
     def acai(self):
         return self.__acai
 
-    @descricao.setter
-    def acai(self, acai:
-        self.__descricao = __acai
+    @acai.setter
+    def acai(self, acai):
+        self.__acai = acai
 
     @property
     def chocolate(self):
         return self.__chocolate
 
-    @descricao.setter
+    @chocolate.setter
     def chocolate(self, chocolate):
-        self.__descricao = __chocolate
+        self.__chocolate = chocolate
 
     @property
     def shake(self):
         return self.__shake
 
-    @descricao.setter
+    @shake.setter
     def shake(self, shake):
-        self.__descricao = __shake
+        self.__shake = shake
 
     @property
     def salada_frutas(self):
         return self.__salada_frutas
 
-    @descricao.setter
+    @salada_frutas.setter
     def salada_frutas(self, salada_frutas):
-        self.__descricao = __salada_frutas
+        self.__salada_frutas = salada_frutas
 
     
 

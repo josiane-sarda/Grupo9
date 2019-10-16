@@ -24,86 +24,82 @@ class Comida:
     def pizza(self):
         return self.__pizza
 
-    @tipo.setter
+    @pizza.setter
     def pizza(self, pizza):
-        self.__tipo = __pizza
+        self.__pizza = pizza
 
     @property
     def hamburger(self):
         return self.__hamburger
 
-    @descricao.setter
+    @hamburger.setter
     def hamburger(self, hamburger):
-        self.__descricao = __hamburger
+        self.__hamburguer = hamburger
 
     @property
     def sushi(self):
         return self.__sushi
 
-    @descricao.setter
+    @sushi.setter
     def sushi(self, sushi):
-        self.__descricao = __sushi
+        self.__sushi = sushi
 
     @property
-    def __bixcoito(self):
+    def bixcoito(self):
         return self.__bixcoito
 
-    @descricao.setter
+    @bixcoito.setter
     def bixcoito(self, bixcoito):
-        self.__descricao = __bixcoito
+        self.__bixcoito = bixcoito
 
     @property
-    def __batata(self):
+    def batata(self):
         return self.__batata
 
-    @descricao.setter
+    @batata.setter
     def __batata(self, batata):
-        self.__descricao = __batata
+        self.__batata = batata
 
     @property
-    def __pao(self):
+    def pao(self):
         return self.__pao
 
-    @descricao.setter
+    @pao.setter
     def pao(self, pao):
-        self.__descricao = __pao
+        self.__pao = pao
 
     @property
     def frango(self):
         return self.__frango
 
-    @descricao.setter
+    @frango.setter
     def frango(self, frango):
-        self.__descricao = __frango
+        self.__frango = frango
 
     @property
-    def __lasanha(self):
+    def lasanha(self):
         return self.__lasanha
 
-    @descricao.setter
+    @lasanha.setter
     def lasanha(self, lasanha):
-        self.__descricao = __lasanha
+        self.__lasanha = lasanha
 
     @property
     def fricasse(self):
         return self.__fricasse
 
-    @descricao.setter
+    @fricasse.setter
     def fricasse(self, fricasse):
-        self.__descricao = __fricasse
+        self.__fricasse = fricasse
 
     @property
-    def __tapioca(self):
+    def tapioca(self):
         return self.__tapioca
 
-    @descricao.setter
-    def __tapioca(self, __tapioca):
-        self.__descricao = __tapioca 
+    @tapioca.setter
+    def tapioca(self, tapioca):
+        self.__tapioca = tapioca 
     
-
-
-
-
 
 
 
