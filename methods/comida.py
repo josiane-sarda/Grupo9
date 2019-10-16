@@ -1,8 +1,11 @@
+from flask import Flask, render_template, request, redirect
+import MySQLdb
+
 class Comida:
     def __init__(self):
         self.__id = 0
         self.__pizza = ''
-        self.__hamburger = ''
+        self.__hamburguer = ''
         self.__sushi = ''
         self.__bixcoito = ''
         self.__batata = ''
@@ -26,23 +29,15 @@ class Comida:
 
     @pizza.setter
     def pizza(self, pizza):
-<<<<<<< HEAD
         self.__pizza = pizza
-=======
-        self.__pizza = __pizza
->>>>>>> f8370e1e29824cb4a2934f036dcc2eeb5103b21a
 
     @property
-    def hamburger(self):
-        return self.__hamburger
+    def hamburguer(self):
+        return self.__hamburguer
 
-    @hamburger.setter
-    def hamburger(self, hamburger):
-<<<<<<< HEAD
-        self.__hamburguer = hamburger
-=======
-        self.__hamburger = __hamburger
->>>>>>> f8370e1e29824cb4a2934f036dcc2eeb5103b21a
+    @hamburguer.setter
+    def hamburguer(self, hamburguer):
+        self.__hamburguer = hamburguer
 
     @property
     def sushi(self):
@@ -50,11 +45,7 @@ class Comida:
 
     @sushi.setter
     def sushi(self, sushi):
-<<<<<<< HEAD
         self.__sushi = sushi
-=======
-        self.__sushi = __sushi
->>>>>>> f8370e1e29824cb4a2934f036dcc2eeb5103b21a
 
     @property
     def bixcoito(self):
@@ -62,11 +53,7 @@ class Comida:
 
     @bixcoito.setter
     def bixcoito(self, bixcoito):
-<<<<<<< HEAD
         self.__bixcoito = bixcoito
-=======
-        self.__bixcoito = __bixcoito
->>>>>>> f8370e1e29824cb4a2934f036dcc2eeb5103b21a
 
     @property
     def batata(self):
@@ -74,11 +61,7 @@ class Comida:
 
     @batata.setter
     def __batata(self, batata):
-<<<<<<< HEAD
         self.__batata = batata
-=======
-        self.__batata = __batata
->>>>>>> f8370e1e29824cb4a2934f036dcc2eeb5103b21a
 
     @property
     def pao(self):
@@ -86,11 +69,7 @@ class Comida:
 
     @pao.setter
     def pao(self, pao):
-<<<<<<< HEAD
         self.__pao = pao
-=======
-        self.__pao = __pao
->>>>>>> f8370e1e29824cb4a2934f036dcc2eeb5103b21a
 
     @property
     def frango(self):
@@ -98,11 +77,7 @@ class Comida:
 
     @frango.setter
     def frango(self, frango):
-<<<<<<< HEAD
         self.__frango = frango
-=======
-        self.__frango = __frango
->>>>>>> f8370e1e29824cb4a2934f036dcc2eeb5103b21a
 
     @property
     def lasanha(self):
@@ -110,11 +85,7 @@ class Comida:
 
     @lasanha.setter
     def lasanha(self, lasanha):
-<<<<<<< HEAD
         self.__lasanha = lasanha
-=======
-        self.__lasanha = __lasanha
->>>>>>> f8370e1e29824cb4a2934f036dcc2eeb5103b21a
 
     @property
     def fricasse(self):
@@ -122,26 +93,51 @@ class Comida:
 
     @fricasse.setter
     def fricasse(self, fricasse):
-<<<<<<< HEAD
         self.__fricasse = fricasse
-=======
-        self.__fricasse = __fricasse
->>>>>>> f8370e1e29824cb4a2934f036dcc2eeb5103b21a
-
+       
     @property
     def tapioca(self):
         return self.__tapioca
 
-<<<<<<< HEAD
     @tapioca.setter
     def tapioca(self, tapioca):
         self.__tapioca = tapioca 
-=======
-    @descricao.setter
-    def __tapioca(self, __tapioca):
-        self.__tapioca = __tapioca 
->>>>>>> f8370e1e29824cb4a2934f036dcc2eeb5103b21a
-    
 
 
+def listar_comida_db():
+    conexao = MySQLdb.connect(host="mysql.zuplae.com", user="zuplae14", passwd="grupo09", database="zuplae14")
+    cursor = conexao.cursor()
+    cursor.execute("select * from COMIDA") 
+    listar_comida = []
+    for i in cursor.fetchall():
+        comida = Comida()
+        comida.id = i[0]
+        comida.pizza = i[1]
+        comida.hamburguer = i[2]
+        comida.suchi = i[3]
+        comida.bixcoito = i[4]
+        comida.batata = i[5]
+        comida.pao = i[6]
+        comida.frango = i[7]
+        comida.lasanha = i[8]
+        comida.fricasse = i[9]
+        comida.tapioca = i[10]
+        listar_comida.append(comida)
 
+    conexao.close()
+    return listar_comida
+
+def editar_comida_db(comida):
+    conexao = MySQLdb.connect(host="mysql.zuplae.com", user="zuplae04", passwd="lendas19", database="zuplae04")
+    cursor = conexao.cursor()
+    cursor.execute("UPDATE COMIDA SET NOME = '{}', QUANTIDADE = '{}' WHERE ID = {}"
+    .format(comida.nome, comida.quantidade, comida.id))
+    conexao.commit()
+    conexao.close()   
+
+def deletar_comida(id):
+    conexao = MySQLdb.connect(host="mysql.zuplae.com", user="zuplae04", passwd="lendas19", database="zuplae04")
+    cursor = conexao.cursor()
+    cursor.execute("DELETE FROM Comida WHERE id={}".format(id))
+    conexao.commit()
+    conexao.close()
