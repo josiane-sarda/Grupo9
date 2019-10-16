@@ -26,7 +26,11 @@ class Comida:
 
     @pizza.setter
     def pizza(self, pizza):
+<<<<<<< HEAD
         self.__pizza = pizza
+=======
+        self.__pizza = __pizza
+>>>>>>> f8370e1e29824cb4a2934f036dcc2eeb5103b21a
 
     @property
     def hamburger(self):
@@ -34,7 +38,11 @@ class Comida:
 
     @hamburger.setter
     def hamburger(self, hamburger):
+<<<<<<< HEAD
         self.__hamburguer = hamburger
+=======
+        self.__hamburger = __hamburger
+>>>>>>> f8370e1e29824cb4a2934f036dcc2eeb5103b21a
 
     @property
     def sushi(self):
@@ -42,7 +50,11 @@ class Comida:
 
     @sushi.setter
     def sushi(self, sushi):
+<<<<<<< HEAD
         self.__sushi = sushi
+=======
+        self.__sushi = __sushi
+>>>>>>> f8370e1e29824cb4a2934f036dcc2eeb5103b21a
 
     @property
     def bixcoito(self):
@@ -50,7 +62,11 @@ class Comida:
 
     @bixcoito.setter
     def bixcoito(self, bixcoito):
+<<<<<<< HEAD
         self.__bixcoito = bixcoito
+=======
+        self.__bixcoito = __bixcoito
+>>>>>>> f8370e1e29824cb4a2934f036dcc2eeb5103b21a
 
     @property
     def batata(self):
@@ -58,7 +74,11 @@ class Comida:
 
     @batata.setter
     def __batata(self, batata):
+<<<<<<< HEAD
         self.__batata = batata
+=======
+        self.__batata = __batata
+>>>>>>> f8370e1e29824cb4a2934f036dcc2eeb5103b21a
 
     @property
     def pao(self):
@@ -66,7 +86,11 @@ class Comida:
 
     @pao.setter
     def pao(self, pao):
+<<<<<<< HEAD
         self.__pao = pao
+=======
+        self.__pao = __pao
+>>>>>>> f8370e1e29824cb4a2934f036dcc2eeb5103b21a
 
     @property
     def frango(self):
@@ -74,7 +98,11 @@ class Comida:
 
     @frango.setter
     def frango(self, frango):
+<<<<<<< HEAD
         self.__frango = frango
+=======
+        self.__frango = __frango
+>>>>>>> f8370e1e29824cb4a2934f036dcc2eeb5103b21a
 
     @property
     def lasanha(self):
@@ -82,7 +110,11 @@ class Comida:
 
     @lasanha.setter
     def lasanha(self, lasanha):
+<<<<<<< HEAD
         self.__lasanha = lasanha
+=======
+        self.__lasanha = __lasanha
+>>>>>>> f8370e1e29824cb4a2934f036dcc2eeb5103b21a
 
     @property
     def fricasse(self):
@@ -90,15 +122,25 @@ class Comida:
 
     @fricasse.setter
     def fricasse(self, fricasse):
+<<<<<<< HEAD
         self.__fricasse = fricasse
+=======
+        self.__fricasse = __fricasse
+>>>>>>> f8370e1e29824cb4a2934f036dcc2eeb5103b21a
 
     @property
     def tapioca(self):
         return self.__tapioca
 
+<<<<<<< HEAD
     @tapioca.setter
     def tapioca(self, tapioca):
         self.__tapioca = tapioca 
+=======
+    @descricao.setter
+    def __tapioca(self, __tapioca):
+        self.__tapioca = __tapioca 
+>>>>>>> f8370e1e29824cb4a2934f036dcc2eeb5103b21a
     
 
 
