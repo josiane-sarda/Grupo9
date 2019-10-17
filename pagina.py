@@ -57,5 +57,8 @@ def sobremesa():
 def pedido():
     return render_template('/pedido.html', pagina_nome = pagina_nome)
 
+@app.route('/cadastro')
+def cadastrar():
+    return render_template('/cadastro.html', pagina_nome = pagina_nome)
 
 app.run()
