@@ -5,36 +5,6 @@ from methods.prato import Prato
 from methods.bebida import Bebida
 from methods.sobremesa import Sobremesa
 
-conexao_mysql  = MySQLdb.connect(host='mysql.zuplae.com', database='zuplae14', user='zuplae14', passwd='grupo09')
-app= Flask(__name__)
-pagina_nome = 'nome'
-#################### CADASTRO ##########################################
-
-
-def salvar_cliente_db(cliente):
-    conexao = MySQLdb.connect(host="mysql.zuplae.com", user="zuplae14", passwd="grupo09", database="zuplae14")
-    cursor = conexao.cursor()
-    cursor.execute("UPDATE CADASTRO SET nome='{}', senha='{}', cpf='{}', endereco='{}' WHERE ID={}"
-    .format(cliente.nome, cliente.senha, cliente.cpf, cliente.endereco , cliente.id))
-    conexao.commit()
-
-@app.route('/login', methods=['POST'])
-def salvar_cliente():
-    id = request.form['id']
-    nome = request.form['nome']
-    senha = request.form['senha']
-    cpf = request.form['cpf']
-    endereco = request.form['endereco']
-    cliente = Cadastro()
-    cliente.id = id 
-    cliente.nome = nome 
-    cliente.senha = senha
-    cliente.cpf = cpf
-    cliente.endereco = endereco
-    salvar_cliente_db(cliente)
-    return redirect ('/home')
-
-
 #################### PRATO ##########################################
 
 
@@ -117,10 +87,10 @@ def listar_sobremesa_db():
     listar_sobremesa = []
     for i in cursor.fetchall():
         nova_sobremesa = Sobremesa()
-        listar_sobremesa.id = i[0]
-        listar_sobremesa.nome = i[1] 
-        listar_sobremesa.quantidade = i[2]
-        listar_sobremesa.preco = i[3]      
+        nova_sobremesa.id = i[0]
+        nova_sobremesa.nome = i[1] 
+        nova_sobremesa.quantidade = i[2]
+        nova_sobremesa.preco = i[3]      
         listar_sobremesa.append(nova_sobremesa)
     
     conexao.close()
@@ -150,10 +120,12 @@ def deletar_sobremesa(id):
 
 ################################-ROTAS-############################################################
 
+app= Flask(__name__)
+pagina_nome = 'nome'
 
 @app.route('/')
 def inicio():
-    return render_template('login.html', pagina_nome = pagina_nome)
+    return render_template('home.html', pagina_nome = pagina_nome)
 
 @app.route('/home')
 def principal():
@@ -180,9 +152,12 @@ def salvar_sobremesa():
     nome = request.form['item'] 
     preco = request.form['preco']
     quantidade = request.form['quant']
-    nova_sobremesa = Sobremesa(nome, quantidade, preco)
+    nova_sobremesa = Sobremesa()
+    nova_sobremesa.nome = nome
+    nova_sobremesa.preco = preco
+    nova_sobremesa.quantidade = quantidade
     salvar_sobremesa_db(nova_sobremesa.nome, nova_sobremesa.preco, nova_sobremesa.quantidade)    
-    return redirect('/pedido')
+    return redirect('/sobremesa')
 
 
 @app.route('/pedido')

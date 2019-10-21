@@ -126,11 +126,9 @@
     <table>
 
         <tr>
-            <form action="/salvar_pedido" method="POST">
                 <td>{{i.nome}}</td>
-                <td>{{i.preço}}</td>
+                <td>{{i.preco}}</td>
                 <td>{{i.quantidade}}</td>
-            </form>
         </tr>
     </table>
 
@@ -138,16 +136,17 @@
 
     <table>
         <tr>
-            <form action="/comida/salvar" method="POST">
+            <form action="/sobremesa/salvar" method="POST">
                 <td><input type="text" name="item"></td>
                 <td><input type="text" name="preco"></td>
                 <td><input type="text" name="quant"></td>
+                <td><input type="submit" value="Salvar"></td>
             </form>
 
         </tr>
     </table>
 
-    <input type="submit" value="Salvar">
+
 </body>
 
 </html>
