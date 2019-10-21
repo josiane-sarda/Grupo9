@@ -32,6 +32,10 @@ input[type=text]:focus, input[type=password]:focus {
   background-color: #ddd;
   outline: none;
 }
+/* input[type=text]:focus, input[type=password]:focus {
+  background-color: #ddd;
+  outline: none;
+} */
 
 /* Overwrite default styles of hr */
 hr {
@@ -69,13 +73,13 @@ a {
 </head>
 <body>
 
-<form action="/action_page.php">
+<form action="/login">
   <div class="container">
     <h1>Criar Cadastro</h1>
     <hr>
 
-    <label for="nome"><b>Nome</b></label>
-    <input type="text" placeholder="Nome" name="nome" required>
+    <label for="email"><b>Email</b></label>
+    <input type="text" placeholder="Email" name="email" required>
 
     <label for="endereco"><b>Endereço</b></label>
     <input type="text" placeholder="Endereço" name="endereco" required>
@@ -90,7 +94,7 @@ a {
   </div>
   
   <div class="container signin">
-    <p>Já tem uma conta fela da quenga? <a href="/login">Entra ai puta</a>.</p>
+    <p>Já tem uma conta ? <a href="/login">Entra agora</a>.</p>
   </div>
 </form>
 

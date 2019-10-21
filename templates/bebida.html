@@ -61,6 +61,32 @@
         .dropdown:hover .dropdown-content {
             display: block;
         }
+
+        table th {
+            
+            border: 1px solid #617caf;
+            text-align: left;
+            padding: 8px;
+            width: 20%;
+
+        }
+
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        td {
+            border: 1px solid #dddddd;
+            text-align: justify;
+            padding: 5px;
+            width: 20%;
+        }
+
+        tr:nth-child(even) {
+            background-color: #b98e8e;
+        }
     </style>
 </head>
 
@@ -78,6 +104,28 @@
             </div>
         </li>
     </ul>
+
+    <table >
+            <tr>
+                <th>nome</th>
+                <th>quantidade</th>
+                <th>preço</th>
+            </tr>
+        </table>
+
+        {% for i in lista_html %}
+
+        <table>
+
+            <tr>
+                <td>{{i.nome}}</td>
+                <td>{{i.quantidade}}</td>
+                <td>{{i.preço}}</td>
+            </tr>
+        </table>
+            {% endfor %}
+    
+        </tbody>
 
 </body>
 

@@ -1,10 +1,9 @@
-class Cadastro:
+class Login :
     def __init__(self):
         self.__id= 0
         self.__email=''
         self.__senha=''
-        self.__cpf=''
-        self.__endereco=''
+       
 
     @property
     def id(self):
@@ -26,17 +25,3 @@ class Cadastro:
     @senha.setter
     def senha(self, senha):
         self.__senha = senha
-
-    @property
-    def cpf(self):
-        return self.__cpf
-    @cpf.setter
-    def cpf(self, cpf):
-        self.__cpf = cpf
-
-    @property
-    def endereco(self):
-        return self.__endereco
-    @endereco.setter
-    def endereco(self, endereco):
-        self.__endereco = endereco

@@ -19,7 +19,7 @@ body {
 }
 
 /* Full-width input fields */
-input[type=text], input[type=password] {
+input[type=email], input[type=password] {
   width: 100%;
   padding: 15px;
   margin: 5px 0 22px 0;
@@ -28,7 +28,7 @@ input[type=text], input[type=password] {
   background: #ffffff;
 }
 
-input[type=text]:focus, input[type=password]:focus {
+input[type=email]:focus, input[type=password]:focus {
   background-color: #ddd;
   outline: none;
 }
@@ -69,13 +69,13 @@ a {
 </head>
 <body>
 
-<form action="/action_page.php">
+<form action="/home">
   <div class="container">
     <h1>Fazer login</h1>
     <hr>
 
-    <label for="email"><b>Nome</b></label>
-    <input type="text" placeholder="Enter Email" name="email" required>
+    <label for="email"><b>Email</b></label>
+    <input type="email" placeholder="Email" name="email" required>
 
     <label for="psw"><b>Senha</b></label>
     <input type="password" placeholder="Enter Password" name="psw" required>

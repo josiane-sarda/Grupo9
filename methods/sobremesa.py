@@ -1,10 +1,10 @@
 class Sobremesa: 
-    def __init__(self, sorvete, acai, chocolate, shake, salada_frutas):
-        self.Sorvete = sorvete
-        self.Acai = acai
-        self.Chocolate = chocolate
-        self.Shake = shake
-        self.Salada_frutas = salada_frutas
+    def __init__(self, id, nome, quantidade, preço):
+        self.id= id
+        self.nome = nome 
+        self.quantidade = quantidade
+        self.preço = preço
+   
 
    
 

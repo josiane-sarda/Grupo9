@@ -1,11 +1,47 @@
 from flask import Flask, render_template, request, redirect
 import MySQLdb
-from Grupo9.methods.cadastro import Cadastro
-from Grupo9.methods.prato import Prato
-from Grupo9.methods.bebida import Bebida
-from Grupo9.methods.sobremesa import Sobremesa
+from methods.cadastro import Cadastro
+from methods.prato import Prato
+from methods.bebida import Bebida
+from methods.sobremesa import Sobremesa
+from methods.login import Login
 
 conexao_mysql  = MySQLdb.connect(host='mysql.zuplae.com', database='zuplae14', user='zuplae14', passwd='grupo09')
+
+app= Flask(__name__)
+pagina_nome = "HB FOOD"
+
+#################### LOGIN ###############################################
+
+@app.route('/testar_login', methods=['POST'])
+def logins():
+
+    conexao = MySQLdb.connect(host="mysql.zuplae.com", user="zuplae12", passwd="grupo07", database="zuplae12")
+    cursor = conexao.cursor()
+    cursor.execute('SELECT * FROM LOGIN')
+    lista_clientes = []
+    for i in cursor.fetchall():
+        cliente = Login() 
+        cliente.nome = i[1]
+        cliente.senha = i[2]  
+        lista_clientes.append(cliente)
+
+    cliente1 = request.form['nome']
+    senha1 = request.form['senha']
+    user = Login()
+    user.nome = cliente1
+    user.senha = senha1
+    for i in range(len(lista_clientes)):
+        var_cliente = lista_clientes[i]
+        if user.senha == var_cliente.senha and user.nome == var_cliente.usuario:
+            return render_template('home.html', titulo='titulo')
+
+    if user.senha != var_cliente.senha:
+            return redirect('/login')
+
+    elif user.nome != var_cliente.usuario:
+            return redirect('/login')
+
 
 
 #################### CADASTRO ##########################################
@@ -14,7 +50,7 @@ conexao_mysql  = MySQLdb.connect(host='mysql.zuplae.com', database='zuplae14', u
 def salvar_cliente_db(cliente):
     conexao = MySQLdb.connect(host="mysql.zuplae.com", user="zuplae14", passwd="grupo09", database="zuplae14")
     cursor = conexao.cursor()
-    cursor.execute("UPDATE Cliente SET nome='{}', senha='{}', cpf='{}', endereco='{}' WHERE ID={}"
+    cursor.execute("UPDATE CADASTRO SET nome='{}', senha='{}', cpf='{}', endereco='{}' WHERE ID={}"
     .format(cliente.nome, cliente.senha, cliente.cpf, cliente.endereco , cliente.id))
     conexao.commit()
 
@@ -25,7 +61,7 @@ def salvar_cliente():
     senha = request.form['senha']
     cpf = request.form['cpf']
     endereco = request.form['endereco']
-    cliente = cadastro()
+    cliente = Cadastro()
     cliente.id = id 
     cliente.nome = nome 
     cliente.senha = senha
@@ -44,7 +80,7 @@ def listar_prato_db():
     cursor.execute("select * from PRATOS") 
     listar_prato = []
     for i in cursor.fetchall():
-        prato = prato(i[0],i[1],i[2],i[3],i[4],i[5],i[6],i[7],i[8],i[9])       
+        prato = Prato(i[0],i[1],i[2],i[3])       
         listar_prato.append(prato)
 
     conexao.close()
@@ -53,8 +89,8 @@ def listar_prato_db():
 def editar_prato_db(prato):
     conexao = MySQLdb.connect(host="mysql.zuplae.com", user="zuplae04", passwd="lendas19", database="zuplae04")
     cursor = conexao.cursor()
-    cursor.execute("UPDATE PRATO SET NOME = '{}', QUANTIDADE = '{}' WHERE ID = {}"
-    .format(prato.nome, prato.quantidade, prato.id))
+    cursor.execute("UPDATE PRATO SET NOME = '{}', QUANTIDADE = '{}', PRECO = '{}' WHERE ID = {}"
+    .format(prato.nome, prato.quantidade, prato.preco ,prato.id))
     conexao.commit()
     conexao.close()   
 
@@ -73,10 +109,11 @@ def deletar_prato(id):
 def listar_bebida_db():
     conexao = MySQLdb.connect(host="mysql.zuplae.com", user="zuplae14", passwd="grupo09", database="zuplae14")
     cursor = conexao.cursor()
-    cursor.execute("select * from BEBIDA") 
+
+    cursor.execute("select * from BEBIDAS") 
     listar_bebida = []
     for i in cursor.fetchall():
-        bebida = bebida(i[0],i[1],i[2],i[3],i[4],i[5],i[6])
+        bebida = Bebida(i[0],i[1],i[2],i[3])
         listar_bebida.append(bebida)
 
     conexao.close()
@@ -85,15 +122,15 @@ def listar_bebida_db():
 def editar_bebida_db(bebida):
     conexao = MySQLdb.connect(host="mysql.zuplae.com", user="zuplae04", passwd="lendas19", database="zuplae04")
     cursor = conexao.cursor()
-    cursor.execute("UPDATE BEBIDA SET NOME = '{}', QUANTIDADE = '{}' WHERE ID = {}"
-    .format(bebida.nome, bebida.quantidade, bebida.id))
+    cursor.execute("UPDATE BEBIDAS SET NOME = '{}', QUANTIDADE = '{}', PRECO = '{}' WHERE ID = {}"
+    .format(bebida.nome, bebida.quantidade,bebida.preco ,bebida.id))
     conexao.commit()
     conexao.close()   
 
 def deletar_bebida(id):
     conexao = MySQLdb.connect(host="mysql.zuplae.com", user="zuplae04", passwd="lendas19", database="zuplae04")
     cursor = conexao.cursor()
-    cursor.execute("DELETE FROM Bebida WHERE id={}".format(id))
+    cursor.execute("DELETE FROM BEBIDAS WHERE id={}".format(id))
     conexao.commit()
     conexao.close()
 
@@ -104,10 +141,10 @@ def deletar_bebida(id):
 def listar_sobremesa_db():
     conexao = MySQLdb.connect(host="mysql.zuplae.com", user="zuplae14", passwd="grupo09", database="zuplae14")
     cursor = conexao.cursor()
-    cursor.execute("select * from SOBREMESA") 
+    cursor.execute("select * from SOBREMESAS") 
     listar_sobremesa = []
     for i in cursor.fetchall():
-        sobremesa = sobremesa(i[0],i[1],i[2],i[3],i[4])       
+        sobremesa = Sobremesa(i[0],i[1],i[2],i[3])       
         listar_sobremesa.append(sobremesa)
     
     conexao.close()
@@ -116,31 +153,43 @@ def listar_sobremesa_db():
 def editar_sobremesa_db(sobremesa):
     conexao = MySQLdb.connect(host="mysql.zuplae.com", user="zuplae04", passwd="lendas19", database="zuplae04")
     cursor = conexao.cursor()
-    cursor.execute("UPDATE SOBREMESA SET NOME = '{}', QUANTIDADE = '{}' WHERE ID = {}"
-    .format(sobremesa.nome, sobremesa.quantidade, sobremesa.id))
+    cursor.execute("UPDATE SOBREMESAS SET NOME = '{}', QUANTIDADE = '{}', PRECO = '{}' WHERE ID = {}"
+    .format(sobremesa.nome, sobremesa.quantidade,sobremesa.preco ,sobremesa.id))
     conexao.commit()
     conexao.close()   
 
 def deletar_sobremesa(id):
     conexao = MySQLdb.connect(host="mysql.zuplae.com", user="zuplae04", passwd="lendas19", database="zuplae04")
     cursor = conexao.cursor()
-    cursor.execute("DELETE FROM Sobremesa WHERE id={}".format(id))
+    cursor.execute("DELETE FROM SOBREMESAS WHERE id={}".format(id))
     conexao.commit()
     conexao.close()
+
+############################### PEDIDO ##########################################
+
+
+
+
 
 
 ############################################################################################
 
-pagina_nome = "HB FOOD"
 
-app= Flask(__name__)
 @app.route('/')
 def inicio():
     return render_template('login.html', pagina_nome = pagina_nome)
 
+@app.route('/home')
+def principal():
+    return render_template('home.html', pagina_nome = pagina_nome)
+
 @app.route('/login')
 def login():
     return render_template('login.html', pagina_nome = pagina_nome)
+
+@app.route('/login/home' , methods = ['POST'])
+def login_home():
+    return render_template('home.html', pagina_nome = pagina_nome)
 
 @app.route('/cadastro')
 def cadastro():
@@ -148,15 +197,18 @@ def cadastro():
 
 @app.route('/comida')
 def comida():
-    return render_template('comida.html', pagina_nome = pagina_nome)
+    guto = listar_prato_db()
+    return render_template('comida.html', pagina_nome = pagina_nome, lista_html = guto)
 
 @app.route('/bebida')
 def babida():
-    return render_template('bebida.html', pagina_nome = pagina_nome)
+    lenda = listar_bebida_db()
+    return render_template('bebida.html', pagina_nome = pagina_nome, lista_html = lenda)
 
 @app.route('/sobremesa')
 def sobremesa():
-    return render_template('sobremesa.html', pagina_nome = pagina_nome)
+    carioca = listar_sobremesa_db()
+    return render_template('sobremesa.html', pagina_nome = pagina_nome, lista_html = carioca)
 
 @app.route('/pedido')
 def pedido():
@@ -170,7 +222,4 @@ def confirmar_pedido():
 def cancelar_pedido():
     return 'Pedido cancelado!'
 
-@app.route('/home')
-def principal():
-    return render_template('home.html', pagina_nome = pagina_nome)
-app.run()
+app.run(debug=True)
