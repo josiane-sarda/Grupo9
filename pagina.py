@@ -116,9 +116,12 @@ def listar_sobremesa_db():
     cursor.execute("select * from SOBREMESAS") 
     listar_sobremesa = []
     for i in cursor.fetchall():
-        sobremesa.append(i[0])
-        sobremesa = Sobremesa(i[1],i[2],i[3])       
-        listar_sobremesa.append(sobremesa)
+        nova_sobremesa = Sobremesa()
+        listar_sobremesa.id = i[0]
+        listar_sobremesa.nome = i[1] 
+        listar_sobremesa.quantidade = i[2]
+        listar_sobremesa.preco = i[3]      
+        listar_sobremesa.append(nova_sobremesa)
     
     conexao.close()
     return listar_sobremesa
