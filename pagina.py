@@ -129,7 +129,7 @@ def deletar_sobremesa(id):
     conexao.close()
 
 
-############################################################################################
+################################-ROTAS-############################################################
 
 pagina_nome = "HB FOOD"
 
@@ -140,6 +140,7 @@ def inicio():
 
 @app.route('/home')
 def principal():
+    
     return render_template('home.html', pagina_nome = pagina_nome)
 
 @app.route('/login')
