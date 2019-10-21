@@ -7,7 +7,6 @@ from methods.sobremesa import Sobremesa
 
 conexao_mysql  = MySQLdb.connect(host='mysql.zuplae.com', database='zuplae14', user='zuplae14', passwd='grupo09')
 app= Flask(__name__)
-
 pagina_nome = 'nome'
 #################### CADASTRO ##########################################
 
@@ -157,18 +156,6 @@ def inicio():
 def principal():
     
     return render_template('home.html', pagina_nome = pagina_nome)
-
-@app.route('/login')
-def login():
-    return render_template('login.html', pagina_nome = pagina_nome)
-
-@app.route('/login/home', methods = ['POST'])
-def login_home():
-    return render_template('home.html', pagina_nome = pagina_nome)
-
-@app.route('/cadastro')
-def cadastro():
-    return render_template('cadastro.html', pagina_nome = pagina_nome)
 
 @app.route('/comida')
 def comida():

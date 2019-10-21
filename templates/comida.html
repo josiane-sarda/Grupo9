@@ -110,32 +110,30 @@
 
         <table >
             <tr>
-                <th>nome</th>
+                <th>Item</th>
+                <th>preço R$</th>
                 <th>quantidade</th>
-                <th>preço</th>
             </tr>
+            
         </table>
 
         {% for i in lista_html %}
 
         <table>
-
+                
             <tr>
-                <td>{{i.nome}}</td>
-                <td>{{i.quantidade}}</td>
-                <td>{{i.preço}}</td>
+                <form action="/comida/salvar" method="POST">
+                <td><input type="text" name="item"></td>
+                <td><input type="text" name="preco"></td>
+                <td><input type="text" name="quant"></td>
+                </form>
+                
             </tr>
+            
         </table>
-        <!-- <table>
-
-            <td>{{i.nome}}</td>
-            <td>{{i.quantidade}}</td>
-            <td>{{i.preço}}</td>
-
-        </table> -->
+        
         {% endfor %}
-
-    </tbody>
+        <input type="submit" value="Salvar">
 
 </body>
 
