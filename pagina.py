@@ -105,9 +105,9 @@ def editar_sobremesa_db(sobremesa):
     conexao.close()   
 
 def deletar_sobremesa(id):
-    conexao = MySQLdb.connect(host="mysql.zuplae.com", user="zuplae04", passwd="lendas19", database="zuplae04")
+    conexao = MySQLdb.connect(host="mysql.zuplae.com", user="zuplae14", passwd="grupo09", database="zuplae14")
     cursor = conexao.cursor()
-    cursor.execute("DELETE FROM SOBREMESAS WHERE id={}".format(id))
+    cursor.execute("DELETE FROM `SOBREMESAS` WHERE id={}".format(id))
     conexao.commit()
     conexao.close()
 
@@ -159,6 +159,11 @@ def salvar_sobremesa():
     salvar_sobremesa_db(nova_sobremesa.nome, nova_sobremesa.preco, nova_sobremesa.quantidade)    
     return redirect('/sobremesa')
 
+@app.route('/deletar/sobremesa')
+def apagar_sobremesa():
+    id = request.args['id']
+    deletar_sobremesa(id)
+    return redirect('/sobremesa')
 
 @app.route('/pedido')
 def pedido():
