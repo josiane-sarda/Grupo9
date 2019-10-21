@@ -4,45 +4,9 @@ from methods.cadastro import Cadastro
 from methods.prato import Prato
 from methods.bebida import Bebida
 from methods.sobremesa import Sobremesa
-from methods.login import Login
 
 conexao_mysql  = MySQLdb.connect(host='mysql.zuplae.com', database='zuplae14', user='zuplae14', passwd='grupo09')
-
 app= Flask(__name__)
-pagina_nome = "HB FOOD"
-
-#################### LOGIN ###############################################
-
-@app.route('/testar_login', methods=['POST'])
-def logins():
-
-    conexao = MySQLdb.connect(host="mysql.zuplae.com", user="zuplae12", passwd="grupo07", database="zuplae12")
-    cursor = conexao.cursor()
-    cursor.execute('SELECT * FROM LOGIN')
-    lista_clientes = []
-    for i in cursor.fetchall():
-        cliente = Login() 
-        cliente.nome = i[1]
-        cliente.senha = i[2]  
-        lista_clientes.append(cliente)
-
-    cliente1 = request.form['nome']
-    senha1 = request.form['senha']
-    user = Login()
-    user.nome = cliente1
-    user.senha = senha1
-    for i in range(len(lista_clientes)):
-        var_cliente = lista_clientes[i]
-        if user.senha == var_cliente.senha and user.nome == var_cliente.usuario:
-            return render_template('home.html', titulo='titulo')
-
-    if user.senha != var_cliente.senha:
-            return redirect('/login')
-
-    elif user.nome != var_cliente.usuario:
-            return redirect('/login')
-
-
 
 #################### CADASTRO ##########################################
 
@@ -172,7 +136,7 @@ def deletar_sobremesa(id):
 
 
 
-############################################################################################
+################################-ROTAS-############################################################
 
 
 @app.route('/')
@@ -181,13 +145,14 @@ def inicio():
 
 @app.route('/home')
 def principal():
+    
     return render_template('home.html', pagina_nome = pagina_nome)
 
 @app.route('/login')
 def login():
     return render_template('login.html', pagina_nome = pagina_nome)
 
-@app.route('/login/home' , methods = ['POST'])
+@app.route('/login/home', methods = ['POST'])
 def login_home():
     return render_template('home.html', pagina_nome = pagina_nome)
 
@@ -222,4 +187,5 @@ def confirmar_pedido():
 def cancelar_pedido():
     return 'Pedido cancelado!'
 
-app.run(debug=True)
+
+app.run()
