@@ -8,6 +8,7 @@ from methods.sobremesa import Sobremesa
 conexao_mysql  = MySQLdb.connect(host='mysql.zuplae.com', database='zuplae14', user='zuplae14', passwd='grupo09')
 app= Flask(__name__)
 
+pagina_nome = 'nome'
 #################### CADASTRO ##########################################
 
 
@@ -101,6 +102,14 @@ def deletar_bebida(id):
 
 #################### SOBREMESA ##########################################
 
+def salvar_sobremesa_db(nome, preco, quantidade):
+    conexao = MySQLdb.connect(host="mysql.zuplae.com", user="zuplae14", passwd="grupo09", database="zuplae14")
+    cursor = conexao.cursor()
+    cursor.execute("INSERT INTO `SOBREMESAS` (`NOME`, `QUANTIDADE`, `PRECO`)" + 
+    " VALUES ('{}', '{}', '{}')".format(nome, preco, quantidade))
+    conexao.commit()
+    conexao.close()
+
 
 def listar_sobremesa_db():
     conexao = MySQLdb.connect(host="mysql.zuplae.com", user="zuplae14", passwd="grupo09", database="zuplae14")
@@ -108,7 +117,8 @@ def listar_sobremesa_db():
     cursor.execute("select * from SOBREMESAS") 
     listar_sobremesa = []
     for i in cursor.fetchall():
-        sobremesa = Sobremesa(i[0],i[1],i[2],i[3])       
+        sobremesa.append(i[0])
+        sobremesa = Sobremesa(i[1],i[2],i[3])       
         listar_sobremesa.append(sobremesa)
     
     conexao.close()
@@ -174,6 +184,16 @@ def babida():
 def sobremesa():
     carioca = listar_sobremesa_db()
     return render_template('sobremesa.html', pagina_nome = pagina_nome, lista_html = carioca)
+
+@app.route('/sobremesa/salvar', methods = ['POST'])
+def salvar_sobremesa():
+    nome = request.form['item'] 
+    preco = request.form['preco']
+    quantidade = request.form['quant']
+    nova_sobremesa = Sobremesa(nome, quantidade, preco)
+    salvar_sobremesa_db(nova_sobremesa.nome, nova_sobremesa.preco, nova_sobremesa.quantidade)    
+    return redirect('/pedido')
+
 
 @app.route('/pedido')
 def pedido():
