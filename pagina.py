@@ -1,12 +1,12 @@
 from flask import Flask, render_template, request, redirect
 import MySQLdb
-from Grupo9.methods.cadastro import Cadastro
-from Grupo9.methods.prato import Prato
-from Grupo9.methods.bebida import Bebida
-from Grupo9.methods.sobremesa import Sobremesa
+from methods.cadastro import Cadastro
+from methods.prato import Prato
+from methods.bebida import Bebida
+from methods.sobremesa import Sobremesa
 
 conexao_mysql  = MySQLdb.connect(host='mysql.zuplae.com', database='zuplae14', user='zuplae14', passwd='grupo09')
-
+app= Flask(__name__)
 
 #################### CADASTRO ##########################################
 
@@ -133,14 +133,22 @@ def deletar_sobremesa(id):
 
 pagina_nome = "HB FOOD"
 
-app= Flask(__name__)
+
 @app.route('/')
 def inicio():
     return render_template('login.html', pagina_nome = pagina_nome)
 
+@app.route('/home')
+def principal():
+    return render_template('home.html', pagina_nome = pagina_nome)
+
 @app.route('/login')
 def login():
     return render_template('login.html', pagina_nome = pagina_nome)
+
+@app.route('/login/home', methods = ['POST'])
+def login_home():
+    return render_template('home.html', pagina_nome = pagina_nome)
 
 @app.route('/cadastro')
 def cadastro():
@@ -170,7 +178,5 @@ def confirmar_pedido():
 def cancelar_pedido():
     return 'Pedido cancelado!'
 
-@app.route('/home')
-def principal():
-    return render_template('home.html', pagina_nome = pagina_nome)
+
 app.run()
