@@ -7,11 +7,11 @@
             margin: 0;
         }
 
-        form{
+        form {
 
             margin: 50px;
             background-position-y: 50px;
-            
+
         }
 
         ul {
@@ -70,7 +70,7 @@
         }
 
         table th {
-            
+
             border: 1px solid #000000;
             text-align: left;
             padding: 8px;
@@ -112,41 +112,42 @@
         </li>
     </ul>
 
-<<<<<<< HEAD
-    <table >
-            <tr>
-                <th>nome</th>
-                <th>preço R$</th>
-                <th>quantidade</th>
-            </tr>
-            
-        </table>
+    <table>
+        <tr>
+            <th>nome</th>
+            <th>preço R$</th>
+            <th>quantidade</th>
+        </tr>
 
-        {% for i in lista_html %}
+    </table>
 
-        <table>
-                
-            <tr>
-                <form action="/salvar_pedido" method="POST">
-                <td><input type="checkbox">{{i.nome}}</td>
+    {% for i in lista_html %}
+
+    <table>
+
+        <tr>
+            <form action="/salvar_pedido" method="POST">
+                <td>{{i.nome}}</td>
                 <td>{{i.preço}}</td>
-                <td><input type="number" name="quantity"
-                    min="0" max="10" value="0"></td>
-                </form>
-                
-            </tr>
-            
-        </table>
-        
-        {% endfor %}
-        <input type="submit" value="Salvar">
-=======
-    <form action="/sobremesa">
-        Quantidade (entre 1 e 10): <input type="number" name="quantity" min="1" max="10">
-        <input type="submit" value="Adicionar"><input type="submit" value="Cancelar">
-    </form>
+                <td>{{i.quantidade}}</td>
+            </form>
+        </tr>
+    </table>
 
->>>>>>> 5b31518e6f548d5a9dd5ee0db91e97750b5336f2
+    {% endfor %}
+
+    <table>
+        <tr>
+            <form action="/comida/salvar" method="POST">
+                <td><input type="text" name="item"></td>
+                <td><input type="text" name="preco"></td>
+                <td><input type="text" name="quant"></td>
+            </form>
+
+        </tr>
+    </table>
+
+    <input type="submit" value="Salvar">
 </body>
 
 </html>
