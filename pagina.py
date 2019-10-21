@@ -96,11 +96,11 @@ def listar_sobremesa_db():
     conexao.close()
     return listar_sobremesa
 
-def editar_sobremesa_db(sobremesa):
-    conexao = MySQLdb.connect(host="mysql.zuplae.com", user="zuplae04", passwd="lendas19", database="zuplae04")
+def editar_sobremesa_db(id, nome, quantidade, preco):
+    conexao = MySQLdb.connect(host="mysql.zuplae.com", user="zuplae14", passwd="grupo09", database="zuplae14")
     cursor = conexao.cursor()
-    cursor.execute("UPDATE SOBREMESAS SET NOME = '{}', QUANTIDADE = '{}', PRECO = '{}' WHERE ID = {}"
-    .format(sobremesa.nome, sobremesa.quantidade,sobremesa.preco ,sobremesa.id))
+    cursor.execute("UPDATE `SOBREMESAS` SET `NOME` = '{}', `QUANTIDADE` = {}, `PRECO` = {} WHERE `ID` = {}"
+    .format(nome, quantidade, preco , id))
     conexao.commit()
     conexao.close()   
 
@@ -110,6 +110,20 @@ def deletar_sobremesa(id):
     cursor.execute("DELETE FROM `SOBREMESAS` WHERE id={}".format(id))
     conexao.commit()
     conexao.close()
+
+def buscar_em_sobremesa(id):
+    conexao = MySQLdb.connect(host="mysql.zuplae.com", user="zuplae14", passwd="grupo09", database="zuplae14")
+    cursor = conexao.cursor()
+    cursor.execute("select * from `SOBREMESAS` WHERE `ID` ={}".format(id))
+    s = Sobremesa()
+    for i in cursor.fetchall():
+        s.id = i[0]
+        s.nome = i[1]
+        s.quantidade = i[2]
+        s.preco = i[3]
+    conexao.commit()
+    conexao.close()
+    return s                
 
 ############################### PEDIDO ##########################################
 
@@ -164,6 +178,21 @@ def apagar_sobremesa():
     id = request.args['id']
     deletar_sobremesa(id)
     return redirect('/sobremesa')
+
+@app.route('/alterar/sobremesa')
+def alterar_sobremesa():
+    id = request.args['id']
+    alteracao_sobremesa = buscar_em_sobremesa(id)
+    return render_template('alterar.html', alterar_sobremesa = alteracao_sobremesa)    
+
+@app.route('/alterar/salvar/sobremesa', methods=['POST'])
+def salvar_alteracao_sobremesa():
+    id = request.form['id']
+    nome = request.form['nome']     
+    quantidade = request.form['quantidade'] 
+    preco = request.form['preco']
+    editar_sobremesa_db(id, nome, quantidade, preco)
+    return redirect('/sobremesa') 
 
 @app.route('/pedido')
 def pedido():
