@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HB FOOD</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="../static/estilos.css">    
+</head>
+    <style>
+        body{
+            background: rgb(152, 203, 236);
+        }
+        .cabecalho{
+            margin: 0;
+            width: 100%;
+            background: rgb(41, 104, 146);
+            height: 4em;
+            text-align: center;
+            padding: 0.8em;
+            font-family: 'Times New Roman', Times, serif;
+        }
+        .cabecalho h1{
+            text-align: center;
+        }
+        h1{
+            height: 1em;
+            width: 20%;
+        }   
+    </style>
+<body>
+    <div class='cabecalho'>
+        <h1>HB FOOD</h1>
+    </div>
+<h1>Alterar</h1>
+<form action="/alterar/salvar/prato" method="POST">
+    <input type="hidden" name="id" value="{{alterar_prato.id}}">
+    <input type="text" placeholder="Nome do Prato" name="nome" value="{{alterar_prato.nome}}">
+    <input type="text" placeholder="Quantidade" name="quantidade" value="{{alterar_prato.preco}}">
+    <input type="text" placeholder="Preço" name="preco" value="{{alterar_prato.quantidade}}">
+    <input type="submit" value="salvar">    
+
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crosson="anonymous"></script>
+<script srrigic="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"></script>
+
+</body>
+</html>

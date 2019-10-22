@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>           
+        table tr th {
+            border: none;
+            text-align: left;
+            padding: 6px;
+            width: 3.5em;
+        }
+
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 90%;
+            float: center;
+        }
+
+
+        table tr td {
+            border: 1px solid #dddddd;
+            text-align: justify;
+            padding: 4px;
+            width: 15%;
+        }
+        table tr th a {
+            text-align: right;
+        }
+        table tr form{
+            width: 15%;
+        }
+
+    </style>
+
+    <meta charset="UTF-8">
+    <title>HB FOOD</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="../static/estilos.css">    
+</head>
+<body>
+    <div class='cabecalho'>
+        <h1>{{pagina_nome}}</h1>
+        <table >
+            <tr>
+                <th>Item</th>
+                <th>Preço R$</th>
+                <th>Quantidade</th>
+            </tr>
+            
+        </table>
+
+        {% for i in lista_html %}
+
+        <table>
+            <tr>
+                <td>{{i.nome}}</td>
+                <td>{{i.preco}}</td>
+                <td>{{i.quantidade}}</td>
+                <td>
+                    <a href="/deletar/prato?id={{i.id}}">Deletar</a>
+                    <a href="/alterar/prato?id={{i.id}}">Alterar</a>
+                </td>
+            </tr>
+        </table>
+    
+        {% endfor %}
+    
+        <table>
+            <tr>
+                <form action="/prato/salvar" method="POST">
+                    <td><input type="text" name="item"></td>
+                    <td><input type="text" name="preco"></td>
+                    <td><input type="text" name="quant"></td>
+                    <td><input type="submit" value="Salvar"></td>
+                </form>
+    
+            </tr>
+        </table>
+         
+
+    
+    
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crosson="anonymous"></script>
+    <script srrigic="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+</body>
+</html>
