@@ -98,9 +98,9 @@
         <li class="dropdown">
             <a href="javascript:void(0)" class="dropbtn">BEBIDAS</a>
             <div class="dropdown-content">
-                <a>{{}}</a>
                 <a href="/pedido">PEDIDO</a>
                 <a href="/sobremesa">SOBREMESAS</a>
+                <a href="/prato">SOBREMESAS</a>
             </div>
         </li>
     </ul>
@@ -114,25 +114,32 @@
         
     </table>
 
-    {% for i in lista_html %}
+    {% for i in listas_html %}
 
     <table>
-            
+
+        <tr>
+                <td>{{i.nome}}</td>
+                <td>{{i.preco}}</td>
+                <td>{{i.quantidade}}</td>
+                <td>
+                    <a href="/deletar/bebida?id={{i.id}}">Deletar</a>
+                    <a href="/alterar/bebida?id={{i.id}}">Alterar</a>
+                </td>
+        </tr>
+    </table>
+
+    {% endfor %}
+
+    <table>
         <tr>
             <form action="/bebida/salvar" method="POST">
-            <td><input type="text" name="item"></td>
-            <td><input type="text" name="preco"></td>
-            <td><input type="text" name="quant"></td>
+                <td><input type="text" name="item"></td>
+                <td><input type="text" name="preco"></td>
+                <td><input type="text" name="quant"></td>
+                <td><input type="submit" value="Salvar"></td>
             </form>
-            
-        </tr>
-        
-    </table>
-    
-    {% endfor %}
-    <input type="submit" value="Salvar">
-    
-        </tbody>
+     
 
 </body>
 

@@ -120,21 +120,31 @@
         {% for i in lista_html %}
 
         <table>
-                
+    
             <tr>
-                <form action="/comida/salvar" method="POST">
-                <td><input type="text" name="item"></td>
-                <td><input type="text" name="preco"></td>
-                <td><input type="text" name="quant"></td>
-                </form>
-                
+                    <td>{{i.nome}}</td>
+                    <td>{{i.preco}}</td>
+                    <td>{{i.quantidade}}</td>
+                    <td>
+                        <a href="/deletar/prato?id={{i.id}}">Deletar</a>
+                        <a href="/alterar/prato?id={{i.id}}">Alterar</a>
+                    </td>
             </tr>
-            
         </table>
-        
+    
         {% endfor %}
-        <input type="submit" value="Salvar">
-
+    
+        <table>
+            <tr>
+                <form action="/prato/salvar" method="POST">
+                    <td><input type="text" name="item"></td>
+                    <td><input type="text" name="preco"></td>
+                    <td><input type="text" name="quant"></td>
+                    <td><input type="submit" value="Salvar"></td>
+                </form>
+    
+            </tr>
+        </table>
 </body>
 
 </html>
