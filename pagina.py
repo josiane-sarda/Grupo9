@@ -188,6 +188,8 @@ def principal():
     
     return render_template('home.html', pagina_nome = pagina_nome)
 
+################ ROTAS PARA PRATOS ######################################
+
 @app.route('/prato')
 def comida():
     guto = listar_prato_db()
@@ -226,6 +228,7 @@ def salvar_alteracao_prato():
     editar_prato_db(id, nome, preco, quantidade)
     return redirect('/prato') 
 
+###################### ROTAS PARA BEBIDAS ##############################
 
 @app.route('/bebida')
 def babida():
@@ -266,6 +269,7 @@ def salvar_alteracao_bebida():
 
     return redirect('/bebida') 
 
+############################# ROTAS PARA SOBREMESAS #####################################
 
 @app.route('/sobremesa')
 def sobremesa():
