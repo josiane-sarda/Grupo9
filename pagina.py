@@ -67,7 +67,7 @@ def buscar_em_prato(id):
 def salvar_bebida_db(nome, preco, quantidade):
     conexao = MySQLdb.connect(host="mysql.zuplae.com", user="zuplae14", passwd="grupo09", database="zuplae14")
     cursor = conexao.cursor()
-    cursor.execute("INSERT INTO `BEBIDAS` (`NOME`, `QUANTIDADE`, `PRECO`)" + 
+    cursor.execute("INSERT INTO `BEBIDAS` (`NOME`, `PRECO`, `QUANTIDADE`)" + 
     " VALUES ('{}', '{}', '{}')".format(nome, preco, quantidade))
     conexao.commit()
     conexao.close()
@@ -81,8 +81,8 @@ def listar_bebida_db():
         nova_bebida = Bebida()
         nova_bebida.id = i[0]
         nova_bebida.nome = i[1] 
-        nova_bebida.quantidade = i[2]
         nova_bebida.preco = i[3]      
+        nova_bebida.quantidade = i[2]
         listar_bebida.append(nova_bebida)
     conexao.close()
     return listar_bebida
@@ -90,7 +90,7 @@ def listar_bebida_db():
 def editar_bebida_db(id, nome, quantidade, preco):
     conexao = MySQLdb.connect(host="mysql.zuplae.com", user="zuplae14", passwd="grupo09", database="zuplae14")
     cursor = conexao.cursor()
-    cursor.execute("UPDATE `BEBIDAS` SET `NOME` = '{}', `QUANTIDADE` = {}, `PRECO` = {} WHERE `ID` = {}"
+    cursor.execute("UPDATE `BEBIDAS` SET `NOME` = '{}', PRECO = {}, `QUANTIDADE` = {} WHERE `ID` = {}"
     .format(nome, quantidade, preco ,id))
     conexao.commit()
     conexao.close()   
@@ -111,8 +111,8 @@ def buscar_em_bebida(id):
     for i in cursor.fetchall():
         b.id = i[0]
         b.nome = i[1] 
-        b.quantidade = i[2]
         b.preco = i[3]      
+        b.quantidade = i[2]
     conexao.commit()
     conexao.close()
     return b    
@@ -122,7 +122,7 @@ def buscar_em_bebida(id):
 def salvar_sobremesa_db(nome, preco, quantidade):
     conexao = MySQLdb.connect(host="mysql.zuplae.com", user="zuplae14", passwd="grupo09", database="zuplae14")
     cursor = conexao.cursor()
-    cursor.execute("INSERT INTO `SOBREMESAS` (`NOME`, `QUANTIDADE`, `PRECO`)" + 
+    cursor.execute("INSERT INTO `SOBREMESAS` (`NOME`, `PRECO`, `QUANTIDADE`)" + 
     " VALUES ('{}', '{}', '{}')".format(nome, preco, quantidade))
     conexao.commit()
     conexao.close()
@@ -137,8 +137,8 @@ def listar_sobremesa_db():
         nova_sobremesa = Sobremesa()
         nova_sobremesa.id = i[0]
         nova_sobremesa.nome = i[1] 
-        nova_sobremesa.quantidade = i[2]
         nova_sobremesa.preco = i[3]      
+        nova_sobremesa.quantidade = i[2]
         listar_sobremesa.append(nova_sobremesa)
     
     conexao.close()
@@ -147,7 +147,7 @@ def listar_sobremesa_db():
 def editar_sobremesa_db(id, nome, quantidade, preco):
     conexao = MySQLdb.connect(host="mysql.zuplae.com", user="zuplae14", passwd="grupo09", database="zuplae14")
     cursor = conexao.cursor()
-    cursor.execute("UPDATE `SOBREMESAS` SET `NOME` = '{}', `QUANTIDADE` = {}, `PRECO` = {} WHERE `ID` = {}"
+    cursor.execute("UPDATE `SOBREMESAS` SET `NOME` = '{}', `PRECO` = {}, `QUANTIDADE` = {} WHERE `ID` = {}"
     .format(nome, quantidade, preco , id))
     conexao.commit()
     conexao.close()   
@@ -167,8 +167,8 @@ def buscar_em_sobremesa(id):
     for i in cursor.fetchall():
         s.id = i[0]
         s.nome = i[1]
-        s.quantidade = i[2]
         s.preco = i[3]
+        s.quantidade = i[2]
     conexao.commit()
     conexao.close()
     return s                
@@ -221,9 +221,9 @@ def alterar_prato():
 def salvar_alteracao_prato():
     id = request.form['id']
     nome = request.form['nome']     
-    quantidade = request.form['quantidade'] 
     preco = request.form['preco']
-    editar_prato_db(id, nome, quantidade, preco)
+    quantidade = request.form['quantidade'] 
+    editar_prato_db(id, nome, preco, quantidade)
     return redirect('/prato') 
 
 
@@ -260,9 +260,10 @@ def alterar_bebida():
 def salvar_alteracao_bebida():
     id = request.form['id']
     nome = request.form['nome']     
-    quantidade = request.form['quantidade'] 
     preco = request.form['preco']
-    editar_bebida_db(id, nome, quantidade, preco)
+    quantidade = request.form['quantidade'] 
+    editar_bebida_db(id, nome,preco, quantidade)
+
     return redirect('/bebida') 
 
 
@@ -299,9 +300,9 @@ def alterar_sobremesa():
 def salvar_alteracao_sobremesa():
     id = request.form['id']
     nome = request.form['nome']     
-    quantidade = request.form['quantidade'] 
     preco = request.form['preco']
-    editar_sobremesa_db(id, nome, quantidade, preco)
+    quantidade = request.form['quantidade'] 
+    editar_sobremesa_db(id, nome, preco, quantidade)
     return redirect('/sobremesa') 
 
 
